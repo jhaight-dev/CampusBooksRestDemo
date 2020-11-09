@@ -1,0 +1,3 @@
+GET localhost:8080/api/campuses
+###
+GET localhost:8080/api/campuses/1
