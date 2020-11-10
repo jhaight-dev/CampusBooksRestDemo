@@ -1,3 +1,37 @@
+
+
+###
+GET http://localhost:8080/api/campuses/1
+Accept: application/json
+
+###
 GET localhost:8080/api/campuses
+
 ###
 GET localhost:8080/api/campuses/1
+###
+POST http://localhost:8080/api/campuses
+Content-Type: application/json
+
+{"location": "online","techStack": "Java"}
+###
+PUT http://localhost:8080/api/campuses
+Content-Type: application/json
+
+{"location": "remote","techStack": "Java"}
+###
+GET http://localhost:8080/api/authors
+Accept: application/json
+
+###
+
+# | * | `PATCH` | `/campuses/{id}/books` | Create new book resource associated with campus for given id | FALSE |
+# | * | `GET` | `/books` | Get all books | TRUE |
+# | * | `GET` | `/books/{id}` | Get book for given id | TRUE |
+# |  | `POST` | `/books` | Create new book | FALSE |
+# |  | `PUT` | `/books/{id}` | Update book for given id | TRUE |
+# | * | `GET` | `/authors` | Get all authors | TRUE | FALSE |
+# | * | `GET` | `/authors/{id}` | Get author for given id | TRUE |
+# | * | `POST` | `/authors` | Create new author | FALSE |
+# |  | `PUT` | `/authors/{id}` | Update author for given id | TRUE |
+# |  | `PATCH` | `/authors/{id}/name` | Update author name for author with given id | TRUE |

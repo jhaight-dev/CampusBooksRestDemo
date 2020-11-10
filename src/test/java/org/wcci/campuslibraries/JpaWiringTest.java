@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.wcci.campuslibraries.resources.Campus;
+import org.wcci.campuslibraries.storage.CampusRepository;
+
+import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,6 +18,8 @@ public class JpaWiringTest {
     private CampusRepository campusRepo;
     @Autowired
     private TestEntityManager entityManager;
+    @Autowired
+    private AuthorRepository authorRepo;
 
     @Test
     public void campusRepoShouldSaveAndRetrieveCampusObjects() {
@@ -29,5 +34,16 @@ public class JpaWiringTest {
 
         assertThat(retrievedCampus).isEqualTo(testCampus);
     }
+    @Test
+    public void authorRepoShouldSaveAndRetrieveAuthorObjects(){
+        Author testAuthor = new Author("authorName");
+        authorRepo.save(testAuthor);
 
+        entityManager.flush();
+        entityManager.clear();
+
+        Author retrievedAuthor = authorRepo.findById(testAuthor.getId()).get();
+
+        assertThat(retrievedAuthor).isEqualTo(testAuthor);
+    }
 }
