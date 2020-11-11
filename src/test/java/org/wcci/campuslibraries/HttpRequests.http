@@ -1,24 +1,35 @@
 
 
 ###
-GET http://localhost:8080/api/campuses/1
+GET http://localhost:8080/api/campuses
 Accept: application/json
 
 ###
 GET localhost:8080/api/campuses
-
 ###
 GET localhost:8080/api/campuses/1
+###
+DELETE localhost:8080/api/campuses/1
+
+
 ###
 POST http://localhost:8080/api/campuses
 Content-Type: application/json
 
-{"location": "online","techStack": "Java"}
+{"location":"Dayton","techStack": "C#"}
+
+
+
 ###
 PUT http://localhost:8080/api/campuses
 Content-Type: application/json
 
 {"location": "remote","techStack": "Java"}
+
+###
+PATCH http://localhost:8080/api/campuses/1/location
+
+Clintonville
 ###
 GET http://localhost:8080/api/authors
 Accept: application/json

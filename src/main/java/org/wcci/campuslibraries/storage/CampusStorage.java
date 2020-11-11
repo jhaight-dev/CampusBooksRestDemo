@@ -24,4 +24,7 @@ public class CampusStorage {
         campusRepo.save(campusToSave);
     }
 
+    public void deleteCampousById(Long id) {
+        campusRepo.deleteById(id);
+    }
 }

@@ -2,6 +2,7 @@ package org.wcci.campuslibraries;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.wcci.campuslibraries.resources.Author;
 import org.wcci.campuslibraries.resources.Campus;
 import org.wcci.campuslibraries.storage.CampusStorage;
 
@@ -19,8 +20,10 @@ public class Populator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Campus columbus = new Campus("Columbus", "Java");
         Campus cleveland = new Campus("Cleveland", "C#");
+        Campus pittsburg = new Campus("Pittsburg", "Java");
         campusStorage.saveCampus(columbus);
         campusStorage.saveCampus(cleveland);
+        campusStorage.saveCampus(pittsburg);
         Author kathySierra = new Author("Kathy Sierra");
         Author bertBates = new Author("Bert Bates");
         Author ericFreeman = new Author("ericFreeman");

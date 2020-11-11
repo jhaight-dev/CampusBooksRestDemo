@@ -29,6 +29,10 @@ public class Campus {
         return location;
     }
 
+    public void changeLocation(String newLocation) {
+        location = newLocation;
+    }
+
     public String getTechStack() {
         return techStack;
     }
