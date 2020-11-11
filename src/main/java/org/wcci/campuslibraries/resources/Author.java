@@ -1,9 +1,13 @@
 package org.wcci.campuslibraries.resources;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Author {
@@ -11,6 +15,9 @@ public class Author {
     @Id
     @GeneratedValue
     private Long id;
+    @ManyToMany(mappedBy = "authors")
+    @JsonIgnore
+    private Set<Book> books;
 
     protected Author() {
     }
@@ -39,5 +46,9 @@ public class Author {
     @Override
     public int hashCode() {
         return Objects.hash(name, id);
+    }
+
+    public Set<Book> getBooks() {
+        return books;
     }
 }

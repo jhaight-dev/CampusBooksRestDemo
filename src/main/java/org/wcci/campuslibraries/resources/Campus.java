@@ -3,6 +3,8 @@ package org.wcci.campuslibraries.resources;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +14,8 @@ public class Campus {
     @Id
     @GeneratedValue
     private Long id;
+    @OneToMany(mappedBy = "campus")
+    private List<Book> books;
 
     protected Campus() {
     }
@@ -51,4 +55,9 @@ public class Campus {
     public int hashCode() {
         return Objects.hash(location, techStack, id);
     }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
 }

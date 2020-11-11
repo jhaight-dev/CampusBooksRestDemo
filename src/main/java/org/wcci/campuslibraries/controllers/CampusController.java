@@ -1,4 +1,4 @@
-package org.wcci.campuslibraries;
+package org.wcci.campuslibraries.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.wcci.campuslibraries.resources.Campus;
