@@ -15,5 +15,3 @@ document.querySelector('.container').prepend(createHeader());
 document.querySelector('.container').appendChild(displayHomeView(allCampuses));
 
 document.querySelector('.container').appendChild(createFooter());
-// document.querySelector('.container').append("This is append");
-// document.querySelector('.container').appendChild("This is append");

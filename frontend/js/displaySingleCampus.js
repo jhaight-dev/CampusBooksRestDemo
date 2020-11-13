@@ -41,7 +41,6 @@ const displaySingleCampus = function (campus) {
     backToAllCampuses.classList.add("back-navigation");
     backToAllCampuses.innerText = "back to campus listings"
     backToAllCampuses.addEventListener('click', clickEvent => {
-        // clickEvent.preventDefault();
         clearChildren(mainContent);
         mainContent.appendChild(displayHomeView(allCampuses));
     });
@@ -57,19 +56,3 @@ const clearChildren = function (element) {
 export {
     displaySingleCampus
 }
-/*
-            <main class="main-content">
-                <section class="campus-library">
-                    <header class="campus-library-header">
-                        <h2 class="campus-library-header__location">Columbus</h2>
-                        <h3 class="campus-library-header__tech-stack">Java</h3>
-                    </header>
-                    <section class="campus-books">
-                        <h3 class="book-title">Head First Java</h3>
-                        <h3 class="book-title">Head First Design Patterns</h3>
-                        <h3 class="book-title">Test Driven Development by Example</h3>
-                    </section>
-                    <a class="back-navigation">back to campus listings</a>
-                </section>
-            </main>
-            */
