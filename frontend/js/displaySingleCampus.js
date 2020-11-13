@@ -40,10 +40,21 @@ const displaySingleCampus = function (campus) {
     const backToAllCampuses = document.createElement("a");
     backToAllCampuses.classList.add("back-navigation");
     backToAllCampuses.innerText = "back to campus listings"
-    backToAllCampuses.addEventListener('click', clickEvent => {
+
+    // backToAllCampuses.addEventListener('click', clickEvent => {
+    //     clearChildren(mainContent);
+    //     mainContent.appendChild(displayHomeView(allCampuses));
+    // });
+
+    backToAllCampuses.addEventListener('click', () => {
         clearChildren(mainContent);
-        mainContent.appendChild(displayHomeView(allCampuses));
+        fetch("http://localhost:8080/api/campuses")
+            .then(response => response.json())
+            .then(campuses => displayHomeView(campuses))
+            .then(campusesElement => mainContent.appendChild(campusesElement))
+            .catch(error => console.log(error));
     });
+
     campusLibraryElement.appendChild(backToAllCampuses);
 
 }
