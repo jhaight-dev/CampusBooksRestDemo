@@ -18,7 +18,7 @@ Content-Type: application/json
 PUT http://localhost:8080/api/campuses
 Content-Type: application/json
 
-{"title": "remote","techStack": "Java"}
+{"id":1,"location": "remote","techStack": "Java"}
 
 ### Update a campus's location property.
 PATCH http://localhost:8080/api/campuses/1/location
