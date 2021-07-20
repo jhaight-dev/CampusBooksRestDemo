@@ -1,54 +1,40 @@
 package org.wcci.campuslibraries.resources;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import java.util.Objects;
-import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Author {
-    private String name;
+
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
+    private String name;
+
     @ManyToMany(mappedBy = "authors")
-    @JsonIgnore
-    private Set<Book> books;
-
-    protected Author() {
-    }
-
-    public Author(String name) {
+    //@JsonIgnore
+    private Collection<Book> books;
+    
+    public Author(String name){
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
+    protected Author(){}
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Author author = (Author) o;
-        return Objects.equals(name, author.name) &&
-                Objects.equals(id, author.id);
-    }
+    public String getName(){ return name; }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, id);
-    }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
+
+
+
 }

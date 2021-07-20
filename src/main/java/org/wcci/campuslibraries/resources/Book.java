@@ -3,10 +3,27 @@ package org.wcci.campuslibraries.resources;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+//import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToOne;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 @Entity
 public class Book {
+
+    @Id
+    @GeneratedValue
+    private long id;
+   
     @ManyToOne
     @JsonIgnore
     private Campus campus;
@@ -14,14 +31,11 @@ public class Book {
     @Lob
     private String summary;
     private boolean available;
-    @ManyToMany
-    private Set<Author> authors;
-    @Id
-    @GeneratedValue
-    private Long id;
 
-    protected Book(){}
-    public Book(Campus campus, String title, String summary, boolean available, Author... authors) {
+    @ManyToMany
+    private Collection<Author> authors;
+    
+    public Book(Campus campus, String title, String summary, boolean available, Author... authors){
         this.campus = campus;
         this.title = title;
         this.summary = summary;
@@ -29,11 +43,13 @@ public class Book {
         this.authors = Set.of(authors);
     }
 
-    public Campus getCampus() {
-        return campus;
+    protected Book(){}
+
+    public long getId(){
+        return id;
     }
 
-    public String getTitle() {
+    public String getTitle(){
         return title;
     }
 
@@ -44,40 +60,17 @@ public class Book {
     public boolean isAvailable() {
         return available;
     }
+    
+    public Campus getCampus() {
+        return campus;
+    }
 
-    public Set<Author> getAuthors() {
+    public Iterable<Author> getAuthors(){
         return authors;
     }
-
-    public Long getId() {
-        return id;
+    public void changeCampus(Campus campus){
+        this.campus = campus;
     }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "campus=" + campus +
-                ", title='" + title + '\'' +
-                ", summary='" + summary + '\'' +
-                ", available=" + available +
-                ", id=" + id +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return available == book.available &&
-                Objects.equals(campus, book.campus) &&
-                Objects.equals(title, book.title) &&
-                Objects.equals(summary, book.summary) &&
-                Objects.equals(id, book.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(campus, title, summary, available, id);
-    }
+    
+    
 }

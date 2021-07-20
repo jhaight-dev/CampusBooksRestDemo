@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,18 +14,21 @@ import java.util.Objects;
 public class Campus {
     private String location;
     private String techStack;
+
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany(mappedBy = "campus")
-    private List<Book> books;
 
+    @OneToMany(mappedBy = "campus")
+    private Collection<Book> books;
+    
     protected Campus() {
     }
 
     public Campus(String location, String techStack) {
         this.location = location;
         this.techStack = techStack;
+        //this.books = new ArrayList<Book>();
     }
 
     public Long getId() {
@@ -41,23 +47,11 @@ public class Campus {
         return techStack;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Campus campus = (Campus) o;
-        return Objects.equals(location, campus.location) &&
-                Objects.equals(techStack, campus.techStack) &&
-                Objects.equals(id, campus.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(location, techStack, id);
-    }
-
-    public List<Book> getBooks() {
+    public Iterable<Book> getBooks(){
         return books;
+    }
+    public void addBook(Book book){
+        books.add(book);
     }
 
 }
