@@ -68,10 +68,10 @@ public class CampusController {
         return campusStorage.retrieveAllCampuses();
     }
 
-//     ### Update a campus's location property.
-// PATCH http://localhost:8080/api/campuses/1/location
+    //     ### Update a campus's location property.
+    // PATCH http://localhost:8080/api/campuses/1/location
+    // Clintonville
 
-// Clintonville
     @PatchMapping("/api/campuses/{id}/location")
     public Campus changeCampusLocation(@PathVariable Long id, @RequestBody String location){
         Campus campusToChange = campusStorage.retrieveCampusById(id);
@@ -80,11 +80,11 @@ public class CampusController {
         return campusToChange;
     }
 
-//     ### Add a new book resource to the campus's books
-// PATCH http://localhost:8080/api/campuses/1/books
-// Content-Type: application/json
+    //     ### Add a new book resource to the campus's books
+    // PATCH http://localhost:8080/api/campuses/1/books
+    // Content-Type: application/json
 
-// {"title": "New Book","summary": "This is a sample book.","available": true,"authors": [{"name": "Sample Author"}, {"name": "Another Sample Author"}]}
+    // {"title": "New Book","summary": "This is a sample book.","available": true,"authors": [{"name": "Sample Author"}, {"name": "Another Sample Author"}]}
     @PatchMapping("/api/campuses/{id}/books")
     public Campus addBookToCampus(@PathVariable Long id, @RequestBody Book bookToAdd){
         Campus campusToChange = campusStorage.retrieveCampusById(id);
