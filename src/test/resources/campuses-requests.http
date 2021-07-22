@@ -12,7 +12,7 @@ DELETE http://localhost:8080/api/campuses/2
 POST http://localhost:8080/api/campuses
 Content-Type: application/json
 
-{"location":"Moab","techStack": "C#"}
+{"location":"NYC","techStack": "basic"}
 
 ### Update a campus resource.
 PUT http://localhost:8080/api/campuses
