@@ -46,7 +46,21 @@ const displaySingleCampus = function(campus){
         const bookElement = document.createElement("h3");
         bookElement.classList.add("book-title");
         bookElement.innerText = book.title;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "Delete";
+        bookElement.appendChild(deleteButton);
         bookSection.appendChild(bookElement);
+
+        deleteButton.addEventListener("click",()=>{
+            fetch("http://localhost:8080/api/campuses/" + campus.id + "/books/"+ book.id,{
+            method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(campus => displaySingleCampus(campus))
+            .catch(error => console.log(error))
+            });
+
     })
 
     const newBookform = document.createElement("form");

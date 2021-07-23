@@ -98,5 +98,14 @@ public class CampusController {
         return campusToChange;
     }
 
+    @DeleteMapping("/api/campuses/{id}/books/{bookId}")
+    public Campus deleteBookFromCampus(@PathVariable Long id, @PathVariable Long bookId){
+        Campus campusToChange = campusStorage.retrieveCampusById(id);
+        Book book = bookRepository.findById(bookId).get();
+        campusToChange.removeBook(book);
+        bookRepository.deleteById(bookId);
+        campusStorage.saveCampus(campusToChange);
+        return campusToChange;
+    }
 
 }

@@ -1,5 +1,7 @@
 package org.wcci.campuslibraries.resources;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +21,8 @@ public class Campus {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "campus")
+
+    @OneToMany(mappedBy = "campus", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Book> books;
     
     protected Campus() {
@@ -52,6 +55,9 @@ public class Campus {
     }
     public void addBook(Book book){
         books.add(book);
+    }
+    public void removeBook(Book book){
+        books.remove(book);
     }
 
 }

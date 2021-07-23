@@ -30,3 +30,6 @@ PATCH http://localhost:8080/api/campuses/1/books
 Content-Type: application/json
 
 {"title": "New Book","summary": "This is a sample book to add.","available": true,"authors": [{"name": "Sample Author"}, {"name": "Another Sample Author"}]}
+
+### Delete a book with id from campus.
+DELETE http://localhost:8080/api/campuses/1/books/7
